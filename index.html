@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Form</title>
+</head>
+<script> 
+let a=document.getElementByTag("button");
+a[0].addEventListener('click',function(){
+    document.body.style.backgroundColor="#333";
+    
+});
+</script>
+<body>
+
+
+Registration details
+<form>
+<label>University:</label>
+<input type="text" id="university">
+<br />
+<label>Institue:</label>
+<input type="text" placeholder="Institute Name">
+<br />
+<label>Branch:</label>
+<select>
+<option type="1" value="1">--select--</option>
+<option type="1" value="2">Computer Science</option>
+<option type="1" value="3">Mechanical</option>
+<option type="1" value="4">Electrical</option>
+<option type="1" value="5">Electronics</option>
+</select>
+<br />
+<label>Degree:</label>
+<select>
+<option type="1" value="1">--select--</option>
+<option type="1" value="2">Computer Science</option>
+<option type="1" value="3">Mechanical</option>
+<option type="1" value="4">Electrical</option>
+<option type="1" value="5">Electronics</option>
+</select>
+
+
+<input type="radio" name="degree-type">Persuing</input>
+<input type="radio" name="degree-type">Completed</input>
+<br />
+<label>Average CPI:</label>
+<input type="number" min="0" max="10">
+Upto
+<input type="number" min="0" max="10">Th Semester
+<br />
+
+<label>Experience:</label>
+<input type="number" min="0" max="100">
+<br />
+<label>Your Website or Blog:</label>
+<input type="text">
+</form>
+
+<button id="submit" >Submit</button>
+</body>
+</html>
