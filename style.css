@@ -1,0 +1,123 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:#f3f6fb;
+}
+
+/* header */
+.header{
+    background:#0f172a;
+    color:white;
+    padding:18px;
+    text-align:center;
+}
+
+/* navbar */
+.navbar{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    background:white;
+    padding:12px;
+}
+
+.navbar button{
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    background:#e2e8f0;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.navbar button:hover{
+    background:#3b82f6;
+    color:white;
+}
+
+/* main */
+.main{
+    padding:40px;
+}
+
+/* pages */
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* form */
+form{
+    margin:20px 0;
+}
+
+input, select{
+    padding:10px;
+    margin-right:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+}
+
+/* table */
+table{
+    width:100%;
+    background:white;
+    border-collapse:collapse;
+    margin-top:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+th,td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+/* badges */
+.badge-active{
+    background:#22c55e;
+    color:white;
+    padding:5px 10px;
+    border-radius:12px;
+}
+
+/* delete */
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    padding:5px 10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
