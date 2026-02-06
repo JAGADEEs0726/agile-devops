@@ -1,87 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Horizon HMS | Pro</title>
+    <title>Hotel Management System</title>
+
+    <!-- LINK CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="app-wrapper">
-        <aside class="sidebar">
-            <div class="brand">🏨 HMS PRO</div>
-            <nav>
-                <div class="nav-item active" onclick="router('dashboard')">Dashboard</div>
-                <div class="nav-item" onclick="router('bookings')">Bookings</div>
-                <div class="nav-item" onclick="router('inventory')">Inventory</div>
-                <div class="nav-item" onclick="router('staff')">Staff</div>
-                <div class="nav-item" onclick="router('billing')">Billing</div>
-            </nav>
-        </aside>
 
-        <main class="main-panel">
-            <header class="top-nav">
-                <h2 id="view-title">Dashboard</h2>
-                <div id="live-clock"></div>
-            </header>
-            <section id="app-viewport"></section>
-        </main>
-    </div>
+<header class="header">
+    🏨 Hotel Management System
+</header>
 
-    <template id="tpl-dashboard">
-        <div class="grid-stats">
-            <div class="stat-card"><h3>Available Rooms</h3><p id="stat-rooms">45</p></div>
-            <div class="stat-card"><h3>Active Guests</h3><p id="stat-guests">12</p></div>
-            <div class="stat-card"><h3>Today's Revenue</h3><p>$2,840</p></div>
-            <div class="stat-card"><h3>Pending Tasks</h3><p>5</p></div>
+<nav class="navbar">
+    <button onclick="show('dashboard')">Dashboard</button>
+    <button onclick="show('staff')">Staff</button>
+    <button onclick="show('inventory')">Inventory</button>
+</nav>
+
+<main class="main">
+
+    <!-- ================= DASHBOARD ================= -->
+    <section id="dashboard" class="page active">
+        <div class="cards">
+            <div class="card">Rooms: 100</div>
+            <div class="card">Booked: 68</div>
+            <div class="card">Available: 32</div>
+            <div class="card">Revenue: ₹1,20,000</div>
         </div>
-    </template>
+    </section>
 
-    <template id="tpl-bookings">
-        <div class="content-card">
-            <h3>New Reservation</h3>
-            <form id="booking-form" onsubmit="handleNewBooking(event)">
-                <input type="text" id="guest" placeholder="Guest Name" required>
-                <select id="room">
-                    <option value="101 (Std)">101 (Standard)</option>
-                    <option value="202 (Dlx)">202 (Deluxe)</option>
-                    <option value="305 (Ste)">305 (Suite)</option>
-                </select>
-                <button type="submit" class="btn-add">Confirm Booking</button>
-            </form>
-            <table class="data-table">
-                <thead><tr><th>ID</th><th>Guest</th><th>Room</th><th>Status</th></tr></thead>
-                <tbody id="list-bookings"></tbody>
-            </table>
+
+
+    <!-- ================= STAFF ================= -->
+    <section id="staff" class="page">
+
+        <h2>👨‍💼 Staff Management</h2>
+
+        <form id="staffForm">
+            <input id="staffName" placeholder="Name" required>
+            <input id="staffPhone" placeholder="Phone" required>
+
+            <select id="staffRole">
+                <option>Manager</option>
+                <option>Receptionist</option>
+                <option>Cleaner</option>
+                <option>Security</option>
+            </select>
+
+            <button>Add Staff</button>
+        </form>
+
+        <table id="staffTable">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+    </section>
+
+
+
+    <!-- ================= INVENTORY ================= -->
+    <section id="inventory" class="page">
+
+        <h2>📦 Inventory Management</h2>
+
+        <!-- stats -->
+        <div class="inv-stats">
+            <div class="stat-card">Items: <span id="totalItems">0</span></div>
+            <div class="stat-card">Low Stock: <span id="lowItems">0</span></div>
+            <div class="stat-card">Value ₹<span id="totalValue">0</span></div>
         </div>
-    </template>
 
-    <template id="tpl-inventory">
-        <div class="content-card">
-            <h3>Supply Management</h3>
-            <div class="inv-item"><span>Linens</span><div class="meter"><span style="width: 85%"></span></div></div>
-            <div class="inv-item"><span>Cleaning Agents</span><div class="meter"><span style="width: 40%" class="low"></span></div></div>
-            <div class="inv-item"><span>Mini Bar Stock</span><div class="meter"><span style="width: 60%"></span></div></div>
-        </div>
-    </template>
+        <!-- form -->
+        <form id="inventoryForm">
+            <input id="itemName" placeholder="Item" required>
+            <input id="itemQty" type="number" placeholder="Qty" required>
+            <input id="itemMin" type="number" placeholder="Min" required>
+            <input id="itemPrice" type="number" placeholder="Price ₹" required>
+            <input id="itemSupplier" placeholder="Supplier">
+            <button>Add</button>
+        </form>
 
-    <template id="tpl-staff">
-        <div class="content-card">
-            <button class="btn-add" onclick="addMockStaff()">Hire New Staff</button>
-            <div class="staff-grid" id="list-staff"></div>
-        </div>
-    </template>
+        <!-- table -->
+        <table id="inventoryTable">
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Min</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Supplier</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </table>
 
-    <template id="tpl-billing">
-        <div class="content-card">
-            <h3>Terminal POS</h3>
-            <div id="billing-view">
-                <p>Select a guest to generate invoice:</p>
-                <div class="billing-actions" id="billing-list"></div>
-            </div>
-        </div>
-    </template>
+    </section>
 
-    <script src="script.js"></script>
+</main>
+
+<!-- LINK JS -->
+<script src="script.js"></script>
+
 </body>
 </html>
