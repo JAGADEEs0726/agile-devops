@@ -1,0 +1,32 @@
+:root { --bg: #f0f2f5; --side: #1a202c; --accent: #4a90e2; --text: #2d3748; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+.app-wrapper { display: flex; height: 100vh; }
+
+/* Sidebar */
+.sidebar { width: 260px; background: var(--side); color: white; padding: 2rem; }
+.brand { font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; color: var(--accent); }
+.nav-item { padding: 12px; cursor: pointer; border-radius: 8px; margin-bottom: 8px; transition: 0.2s; }
+.nav-item:hover, .nav-item.active { background: var(--accent); }
+
+/* Main Area */
+.main-panel { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+.top-nav { background: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+#app-viewport { padding: 2rem; }
+
+/* UI Elements */
+.grid-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.stat-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.content-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+.data-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+.data-table th, .data-table td { text-align: left; padding: 12px; border-bottom: 1px solid #edf2f7; }
+
+.meter { background: #e2e8f0; height: 8px; border-radius: 4px; margin: 10px 0 20px; position: relative; }
+.meter span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.meter span.low { background: #e53e3e; }
+
+.staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.staff-box { border: 1px solid #e2e8f0; padding: 1rem; border-radius: 8px; }
+
+input, select { padding: 10px; margin-right: 10px; border: 1px solid #cbd5e0; border-radius: 6px; }
+.btn-add { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
