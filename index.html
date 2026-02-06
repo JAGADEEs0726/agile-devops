@@ -1,61 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>My Form</title>
+    <meta charset="UTF-8">
+    <title>Hotel Management System</title>
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<script> 
-let a=document.getElementByTag("button");
-a[0].addEventListener('click',function(){
-    document.body.style.backgroundColor="#333";
-    
-});
-</script>
+
 <body>
 
+<!-- HEADER -->
+<header class="header">
+    <h1>🏨 Hotel Management System</h1>
+</header>
 
-Registration details
-<form>
-<label>University:</label>
-<input type="text" id="university">
-<br />
-<label>Institue:</label>
-<input type="text" placeholder="Institute Name">
-<br />
-<label>Branch:</label>
-<select>
-<option type="1" value="1">--select--</option>
-<option type="1" value="2">Computer Science</option>
-<option type="1" value="3">Mechanical</option>
-<option type="1" value="4">Electrical</option>
-<option type="1" value="5">Electronics</option>
-</select>
-<br />
-<label>Degree:</label>
-<select>
-<option type="1" value="1">--select--</option>
-<option type="1" value="2">Computer Science</option>
-<option type="1" value="3">Mechanical</option>
-<option type="1" value="4">Electrical</option>
-<option type="1" value="5">Electronics</option>
-</select>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <button onclick="show('dashboard')">Dashboard</button>
+    <button onclick="show('staff')">Staff</button>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
+        <div class="cards">
+            <div class="card">Rooms: 100</div>
+            <div class="card">Booked: 68</div>
+            <div class="card">Available: 32</div>
+            <div class="card">Revenue: ₹1,20,000</div>
+        </div>
+    </section>
 
 
-<input type="radio" name="degree-type">Persuing</input>
-<input type="radio" name="degree-type">Completed</input>
-<br />
-<label>Average CPI:</label>
-<input type="number" min="0" max="10">
-Upto
-<input type="number" min="0" max="10">Th Semester
-<br />
+    <!-- STAFF PAGE -->
+    <section id="staff" class="page">
 
-<label>Experience:</label>
-<input type="number" min="0" max="100">
-<br />
-<label>Your Website or Blog:</label>
-<input type="text">
-</form>
+        <h2>👨‍💼 Staff Management</h2>
 
-<button id="submit" >Submit</button>
+        <form id="staffForm">
+            <input id="staffName" placeholder="Staff Name" required>
+            <input id="staffPhone" placeholder="Phone" required>
+
+            <select id="staffRole">
+                <option>Manager</option>
+                <option>Receptionist</option>
+                <option>Cleaner</option>
+                <option>Security</option>
+            </select>
+
+            <button type="submit">Add Staff</button>
+        </form>
+
+        <table id="staffTable">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+    </section>
+
+</main>
+
+<!-- JS LINK -->
+<script src="script.js"></script>
+
 </body>
 </html>
