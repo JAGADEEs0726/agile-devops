@@ -1,61 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon HMS | Pro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<script> 
-let a=document.getElementByTag("button");
-a[0].addEventListener('click',function(){
-    document.body.style.backgroundColor="#333";
-    
-});
-</script>
 <body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="brand">🏨 HMS PRO</div>
+            <nav>
+                <div class="nav-item active" onclick="router('dashboard')">Dashboard</div>
+                <div class="nav-item" onclick="router('bookings')">Bookings</div>
+                <div class="nav-item" onclick="router('inventory')">Inventory</div>
+                <div class="nav-item" onclick="router('staff')">Staff</div>
+                <div class="nav-item" onclick="router('billing')">Billing</div>
+            </nav>
+        </aside>
 
+        <main class="main-panel">
+            <header class="top-nav">
+                <h2 id="view-title">Dashboard</h2>
+                <div id="live-clock"></div>
+            </header>
+            <section id="app-viewport"></section>
+        </main>
+    </div>
 
-Registration details
-<form>
-<label>University:</label>
-<input type="text" id="university">
-<br />
-<label>Institue:</label>
-<input type="text" placeholder="Institute Name">
-<br />
-<label>Branch:</label>
-<select>
-<option type="1" value="1">--select--</option>
-<option type="1" value="2">Computer Science</option>
-<option type="1" value="3">Mechanical</option>
-<option type="1" value="4">Electrical</option>
-<option type="1" value="5">Electronics</option>
-</select>
-<br />
-<label>Degree:</label>
-<select>
-<option type="1" value="1">--select--</option>
-<option type="1" value="2">Computer Science</option>
-<option type="1" value="3">Mechanical</option>
-<option type="1" value="4">Electrical</option>
-<option type="1" value="5">Electronics</option>
-</select>
+    <template id="tpl-dashboard">
+        <div class="grid-stats">
+            <div class="stat-card"><h3>Available Rooms</h3><p id="stat-rooms">45</p></div>
+            <div class="stat-card"><h3>Active Guests</h3><p id="stat-guests">12</p></div>
+            <div class="stat-card"><h3>Today's Revenue</h3><p>$2,840</p></div>
+            <div class="stat-card"><h3>Pending Tasks</h3><p>5</p></div>
+        </div>
+    </template>
 
+    <template id="tpl-bookings">
+        <div class="content-card">
+            <h3>New Reservation</h3>
+            <form id="booking-form" onsubmit="handleNewBooking(event)">
+                <input type="text" id="guest" placeholder="Guest Name" required>
+                <select id="room">
+                    <option value="101 (Std)">101 (Standard)</option>
+                    <option value="202 (Dlx)">202 (Deluxe)</option>
+                    <option value="305 (Ste)">305 (Suite)</option>
+                </select>
+                <button type="submit" class="btn-add">Confirm Booking</button>
+            </form>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Guest</th><th>Room</th><th>Status</th></tr></thead>
+                <tbody id="list-bookings"></tbody>
+            </table>
+        </div>
+    </template>
 
-<input type="radio" name="degree-type">Persuing</input>
-<input type="radio" name="degree-type">Completed</input>
-<br />
-<label>Average CPI:</label>
-<input type="number" min="0" max="10">
-Upto
-<input type="number" min="0" max="10">Th Semester
-<br />
+    <template id="tpl-inventory">
+        <div class="content-card">
+            <h3>Supply Management</h3>
+            <div class="inv-item"><span>Linens</span><div class="meter"><span style="width: 85%"></span></div></div>
+            <div class="inv-item"><span>Cleaning Agents</span><div class="meter"><span style="width: 40%" class="low"></span></div></div>
+            <div class="inv-item"><span>Mini Bar Stock</span><div class="meter"><span style="width: 60%"></span></div></div>
+        </div>
+    </template>
 
-<label>Experience:</label>
-<input type="number" min="0" max="100">
-<br />
-<label>Your Website or Blog:</label>
-<input type="text">
-</form>
+    <template id="tpl-staff">
+        <div class="content-card">
+            <button class="btn-add" onclick="addMockStaff()">Hire New Staff</button>
+            <div class="staff-grid" id="list-staff"></div>
+        </div>
+    </template>
 
-<button id="submit" >Submit</button>
+    <template id="tpl-billing">
+        <div class="content-card">
+            <h3>Terminal POS</h3>
+            <div id="billing-view">
+                <p>Select a guest to generate invoice:</p>
+                <div class="billing-actions" id="billing-list"></div>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
 </body>
 </html>
